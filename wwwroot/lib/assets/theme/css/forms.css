@@ -1,0 +1,141 @@
+/*
+Template Name: News Magazine
+File: Forms CSS
+Author: OS Templates
+Author URI: http://www.os-templates.com/
+Licence: <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>
+*/
+
+fieldset{border:1px solid #9E9E9E; margin: 5px;font-size:15px;}
+legend{border: none; margin: 5px;}
+legend.search_id{border: none; margin: 5px; font-size:12px;}
+input, textarea, select{font-size:12px; font-family:Georgia, "Times New Roman", Times, serif;}
+
+/* ----------------------------------------------Search Form-------------------------------------*/
+
+#topbar input{
+	display:block;
+	float:left;
+	width:155px;
+	margin:0 5px 0 0;
+	padding:5px;
+	color:#B6B6B6;
+	background-color:#525252;
+	border:1px solid #343434;
+	font-size:12px;
+	}
+
+#topbar input#go{
+	width:68px;
+	height:26px;
+	margin:0;
+	padding:4px 0;
+	text-transform:uppercase;
+	color:#FFFFFF;
+	background-color:#059BD8;
+	border-color:#396B86;
+	cursor:pointer;
+	font-weight:bold;
+	}
+
+/* ----------------------------------------------Forms in Content Area-------------------------------------*/
+
+.container #respond{display: block; width:100%;}
+
+.container #respond input{width:170px; padding:2px; border:1px solid #CCCCCC; margin:5px 5px 0 0;}
+
+.container #respond textarea{width:98%; border:1px solid #CCCCCC; padding:2px; overflow:auto;}
+	
+.container #respond p{margin:5px 0;}
+
+.container #respond #submit, .container #respond #reset{
+	margin:0;
+	padding:5px;
+	color:#666666;
+	background-color:#F7F7F7;
+	border:1px solid #CCCCCC;
+	cursor:pointer;
+	}
+
+/* ----------------------------------------------Newsletter-------------------------------------*/
+
+#socialise form{
+	display:block;
+	width:300px;
+	margin:0;
+	padding:10px 0 0 0;
+	border:none;
+	}
+
+#socialise input{
+	display:block;
+	width:218px;
+	margin:0 0 10px 0;
+	padding:5px;
+	color:#FFFFFF;
+	background-color:#2684B7;
+	border:1px solid #1C5E82;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	}
+
+#socialise input#newsletter_go{
+	width:58px;
+	height:62px;
+	margin:0;
+	padding:0;
+	font-weight:bold;
+	text-transform:uppercase;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:60px;
+	cursor:pointer;
+	}
+.btn {
+	background: #065010be;
+	padding: 5px 10px;
+	text-decoration: none;
+	color: #fff;
+	cursor: pointer;
+}
+/*.btn {*/
+	/*padding: 19px 39px 18px 39px;*/
+	/*color: #FFF;
+	background-color: #065010be;
+	font-size: 15px;
+	text-align: center;
+	font-style: normal;
+	border-radius: 5px;*/
+	/*width: 100%;*/
+	/*border: 1px solid #3ac162;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-width: 1px 1px 3px;
+	box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+	margin-bottom: 10px;
+	cursor: pointer;
+}*/
+.row {
+	--bs-gutter-x: 1.5rem;
+	--bs-gutter-y: 0;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: calc(var(--bs-gutter-y) * -1);
+	margin-right: calc(var(--bs-gutter-x) / -2);
+	margin-left: calc(var(--bs-gutter-x) / -2);
+}
+
+.col-md-1 {
+	flex: 0 0 auto;
+	width: 8.3333333333%;
+}
+
+.col-md-2 {
+	flex: 0 0 auto;
+	width: 16.6666666667%;
+}
+
+.text-danger {
+	color: #dc3545 !important;
+}

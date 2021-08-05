@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Erefinance.Models.StatusEntryModel>
+
+@{
+    ViewData["Title"] = "Status Data Entry";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn" asp-action="Create">ENTER DASHBOARD DATA</a>
+</p>
+<div style="overflow:scroll; width:100%;">
+    <table style="color:1px #00000 solid; text-align:center;" class="dashboard-table-list" border="1">
+        
+        <tbody>
+            <tr>
+                <th>Edit</th>
+                <th>SL#</th>
+                <th>District</th>
+                <th>SME Category</th>
+                <th>Types of Sector</th>
+                <th>Disb(F) Enterprise</th>
+                <th>Disb(F) Amount</th>
+                <th>Disb(M) Enterprise</th>
+                <th>Disb(M) Amount</th>
+                <th>Total(Disb) Enterprise</th>
+                <th>Total(Disb) Amount</th>
+                <th>Appr(F) Enterprise</th>
+                <th>Appr(F) Amount</th>
+                <th>Appr(M) Enterprise</th>
+                <th>Appr(M) Amount</th>
+                <th>Total(Appr) Enterprise</th>
+                <th>Total(Appr) Amount</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10=(6+8)</th>
+                <th>11=(7+9)</th>
+                <th>12</th>
+                <th>13</th>
+                <th>14</th>
+                <th>15</th>
+                <th>16=(12+14)</th>
+                <th>17=(13+15)</th>
+            </tr>
+            @{
+                int count = 0;
+                float TotalDisbEnterprise = 0;
+                float TotalDisbAmount = 0;
+                float TotalApprEnterprise = 0;
+                float TotalApprAmount = 0;
+            }
+            @foreach (var item in Model)
+            {
+
+                TotalDisbEnterprise = item.DisbursedFemaleEnterprise + item.DisbursedMaleEnterprise;
+                TotalDisbAmount = item.DisbursedFemaleAmount + item.DisbursedMaleAmount;
+                TotalApprEnterprise = item.ApprovedFemaleEnterprise + item.ApprovedMaleEnterprise;
+                TotalApprAmount = item.ApprovedFemaleAmount + item.ApprovedMaleAmount;
+                count++;
+            <tr>
+                <td><a asp-action="Edit" asp-route-id="@item.Id">Edit</a> </td>
+                <td>
+                    @count
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DistrictName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SMECategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypesofSector)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisbursedFemaleEnterprise)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisbursedFemaleAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisbursedMaleEnterprise)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisbursedMaleAmount)
+                </td>
+                <td>
+                    @TotalDisbEnterprise
+                </td>
+                <td>
+                    @TotalDisbAmount
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApprovedFemaleEnterprise)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApprovedFemaleAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApprovedMaleEnterprise)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApprovedMaleAmount)
+                </td>
+                <td>
+                    @TotalApprEnterprise
+                </td>
+                <td>
+                    @TotalApprAmount
+                </td>
+                
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

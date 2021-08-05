@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>F:\NBLErefin</_PublishTargetUrl>
+    <History>True|2021-07-15T12:02:39.8503087Z;True|2021-07-15T17:14:03.8776940+06:00;True|2021-07-15T12:05:10.7213640+06:00;True|2021-07-15T11:33:32.0853736+06:00;True|2021-06-30T21:35:09.6500451+06:00;True|2021-06-30T20:53:16.8128246+06:00;</History>
+  </PropertyGroup>
+</Project>

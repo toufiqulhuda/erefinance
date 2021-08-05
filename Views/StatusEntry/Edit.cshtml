@@ -1,0 +1,252 @@
+﻿@model Erefinance.Models.StatusEntryModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<style>
+    .row {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: calc(var(--bs-gutter-y) * -1);
+        margin-right: calc(var(--bs-gutter-x) / -2);
+        margin-left: calc(var(--bs-gutter-x) / -2);
+    }
+
+    .col-md-1 {
+        flex: 0 0 auto;
+        width: 8.3333333333%;
+    }
+
+    .col-md-2 {
+        flex: 0 0 auto;
+        width: 16.6666666667%;
+    }
+
+    .text-danger {
+        color: #dc3545 !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <h1>@TempData["errorMsg"]</h1>
+            <fieldset id="subproject-info" style="border: single;">
+                <legend><b>Update Data</b></legend>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group row">
+                    <label asp-for="DistrictName" class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <select asp-for="DistrictName"
+                                class="form-control" asp-items="@(new SelectList(@ViewBag.distlist,"DistrictCode", "DistrictName"))">
+                        </select>
+                        @*@Html.DropDownListFor(m => m.DistrictName, new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender")*@
+                        <span asp-validation-for="DistrictName" class="text-danger"></span>
+                    </div>
+                    <label asp-for="FundName" class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <select asp-for="FundName" class="form-control" asp-items="@(new SelectList(@ViewBag.fundlists,"FundCode", "FundName"))">
+                        </select>
+
+                        @*<select id="FundName" name="FundName" required="required">
+                    <option value="" selected="selected">select fund</option>
+                    <option value="19">CMSME (COVID19)</option>
+                </select>*@
+
+                        <span asp-validation-for="FundName" class="text-danger"></span>
+                    </div>
+                    <label asp-for="SMECategory" class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <select asp-for="SMECategory" class="form-control" asp-items="@(new SelectList(@ViewBag.categorylists,"Id", "CategoryName"))">
+                        </select>
+                        @*<select name="SMECategory" id="SMECategory" required="required">
+                    <option value="" selected="selected">select category </option>
+                    <option value="1">Cottage </option>
+                    <option value="2">Micro </option>
+                    <option value="3">Small </option>
+                    <option value="4">Medium </option>
+                </select>*@
+                        <span asp-validation-for="SMECategory" class="text-danger"></span>
+
+                    </div>
+                    <label asp-for="TypesofSector" class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <select asp-for="TypesofSector" class="form-control" asp-items="@(new SelectList(@ViewBag.sectorlists,"Id", "SectorName"))">
+                        </select>
+                        @*<select name="TypesofSector" id="TypesofSector" required="required">
+                    <option value="" selected="selected">select sector</option>
+                    <option value="1">Manufacturing/Industry</option>
+                    <option value="3">Service </option>
+                    <option value="2">Trading </option>
+                </select>*@
+                        <span asp-validation-for="TypesofSector" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="DisbursedFemaleEnterprise" class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <input asp-for="DisbursedFemaleEnterprise" class="form-control" placeholder="Enter number" />
+                        <span asp-validation-for="DisbursedFemaleEnterprise" class="text-danger"></span>
+                    </div>
+                    <label asp-for="DisbursedFemaleAmount" class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <input asp-for="DisbursedFemaleAmount" class="form-control" placeholder="Enter number" />
+                        <span asp-validation-for="DisbursedFemaleAmount" class="text-danger"></span>
+                    </div>
+                    <label asp-for="DisbursedMaleEnterprise" class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <input asp-for="DisbursedMaleEnterprise" class="form-control" placeholder="Enter number" />
+                        <span asp-validation-for="DisbursedMaleEnterprise" class="text-danger"></span>
+                    </div>
+                    <label asp-for="DisbursedMaleAmount" class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <input asp-for="DisbursedMaleAmount" class="form-control" placeholder="Enter number" />
+                        <span asp-validation-for="DisbursedMaleAmount" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="ApprovedFemaleEnterprise" class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <input asp-for="ApprovedFemaleEnterprise" class="form-control" placeholder="Enter number" />
+                        <span asp-validation-for="ApprovedFemaleEnterprise" class="text-danger"></span>
+                    </div>
+                    <label asp-for="ApprovedFemaleAmount" class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <input asp-for="ApprovedFemaleAmount" class="form-control" placeholder="Enter number" />
+                        <span asp-validation-for="ApprovedFemaleAmount" class="text-danger"></span>
+                    </div>
+                    <label asp-for="ApprovedMaleEnterprise" class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <input asp-for="ApprovedMaleEnterprise" class="form-control" placeholder="Enter number" />
+                        <span asp-validation-for="ApprovedMaleEnterprise" class="text-danger"></span>
+                    </div>
+                    <label asp-for="ApprovedMaleAmount" class="control-label col-md-1"></label>
+                    <div class="col-md-2">
+                        <input asp-for="ApprovedMaleAmount" class="form-control" placeholder="Enter number" />
+                        <span asp-validation-for="ApprovedMaleAmount" class="text-danger"></span>
+                    </div>
+                </div>
+                @*
+            <div class="form-group row">
+                <label asp-for="ReportDate" class="control-label col-md-1"></label>
+                <div class="col-md-2">
+                    <input asp-for="ReportDate" type="date" class="form-control" />
+                    <span asp-validation-for="ReportDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+            <label asp-for="DistrictName" class="control-label"></label>
+            <input asp-for="DistrictName" class="form-control" />
+            <span asp-validation-for="DistrictName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="FundName" class="control-label"></label>
+            <input asp-for="FundName" class="form-control" />
+            <span asp-validation-for="FundName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SMECategory" class="control-label"></label>
+            <input asp-for="SMECategory" class="form-control" />
+            <span asp-validation-for="SMECategory" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="TypesofSector" class="control-label"></label>
+            <input asp-for="TypesofSector" class="form-control" />
+            <span asp-validation-for="TypesofSector" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DisbursedFemaleEnterprise" class="control-label"></label>
+            <input asp-for="DisbursedFemaleEnterprise" class="form-control" />
+            <span asp-validation-for="DisbursedFemaleEnterprise" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DisbursedFemaleAmount" class="control-label"></label>
+            <input asp-for="DisbursedFemaleAmount" class="form-control" />
+            <span asp-validation-for="DisbursedFemaleAmount" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DisbursedMaleEnterprise" class="control-label"></label>
+            <input asp-for="DisbursedMaleEnterprise" class="form-control" />
+            <span asp-validation-for="DisbursedMaleEnterprise" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DisbursedMaleAmount" class="control-label"></label>
+            <input asp-for="DisbursedMaleAmount" class="form-control" />
+            <span asp-validation-for="DisbursedMaleAmount" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ApprovedFemaleEnterprise" class="control-label"></label>
+            <input asp-for="ApprovedFemaleEnterprise" class="form-control" />
+            <span asp-validation-for="ApprovedFemaleEnterprise" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ApprovedFemaleAmount" class="control-label"></label>
+            <input asp-for="ApprovedFemaleAmount" class="form-control" />
+            <span asp-validation-for="ApprovedFemaleAmount" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ApprovedMaleEnterprise" class="control-label"></label>
+            <input asp-for="ApprovedMaleEnterprise" class="form-control" />
+            <span asp-validation-for="ApprovedMaleEnterprise" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ApprovedMaleAmount" class="control-label"></label>
+            <input asp-for="ApprovedMaleAmount" class="form-control" />
+            <span asp-validation-for="ApprovedMaleAmount" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ReportDate" class="control-label"></label>
+            <input asp-for="ReportDate" class="form-control" />
+            <span asp-validation-for="ReportDate" class="text-danger"></span>
+        </div>*@
+                @*<div class="form-group">
+                    <label asp-for="BranchName" class="control-label"></label>
+                    <input asp-for="BranchName" type="hidden" class="form-control" />
+                    <span asp-validation-for="BranchName" class="text-danger"></span>
+                </div>*@
+                @*<div class="form-group">
+                    <label asp-for="BranchCode" class="control-label"></label>
+                    <input asp-for="BranchCode" type="hidden" class="form-control" />
+                    <span asp-validation-for="BranchCode" class="text-danger"></span>
+                </div>*@
+                @*<div class="form-group">
+                    <label asp-for="EntryBy" class="control-label"></label>
+                    <input asp-for="EntryBy" type="hidden" class="form-control" />
+                    <span asp-validation-for="EntryBy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EntryDate" class="control-label"></label>
+                    <input asp-for="EntryDate" type="hidden" class="form-control" />
+                    <span asp-validation-for="EntryDate" class="text-danger"></span>
+                </div>*@
+                @*<div class="form-group">
+                    <label asp-for="UpdateBy" class="control-label"></label>
+                    <input asp-for="UpdateBy" class="form-control" />
+                    <span asp-validation-for="UpdateBy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UpdateDate" class="control-label"></label>
+                    <input asp-for="UpdateDate" class="form-control" />
+                    <span asp-validation-for="UpdateDate" class="text-danger"></span>
+                </div>*@
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

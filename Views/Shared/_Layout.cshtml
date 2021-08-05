@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Erefinance</title>
+    <link href="~/lib/assets/theme/css/layout.css" rel="stylesheet" />
+    <link href="~/lib/assets/theme/css/dashboard_cmsme.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/assets/theme/css/forms.css" rel="stylesheet" />
+    <link href="~/lib/assets/theme/css/navi.css" rel="stylesheet" />
+    <link href="~/lib/assets/theme/css/jquery-ui.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <header>
+        <!-- ####################################################################################################### -->
+        <div class="wrapper">
+            <div id="header">
+                <div class="fl_left">
+                    <img src="~/lib/assets/theme/img/logo.png" />
+                </div>
+                <div class="fl_right"><br><h1>eRefinance System of Bangladesh Bank</h1></div>
+                <br class="clear">
+            </div>
+        </div>
+
+        <!-- ####################################################################################################### -->
+        <div class="wrapper col2">
+            <div id="topbar">
+                <div id="topnav">
+                    <ul>
+                        <li class="active">
+                            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="last">
+                            <a href="#">Dashboard</a>
+                            <ul>
+                                <li>
+                                    <a asp-area="" asp-controller="StatusEntry" asp-action="Index">Status Data Entry</a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="Reports" asp-action="DisbursmentTarget">DISBURSEMENT TARGET</a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="Reports" asp-action="DistrictWise">DISTRICT WISE REPORT</a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="Reports" asp-action="SmeCategoryWise">SME CATEGORY WISE REPORT</a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="Reports" asp-action="SectorWise">SECTOR WISE REPORT</a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="Reports" asp-action="GenderWise">GENDER WISE REPORT</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="last">
+                            <a asp-area="" asp-controller="Home" asp-action="#">Account Info</a>
+                            <ul>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Change Account info</a></li>
+                                <li><a href="#">Change Password</a></li>
+                            </ul>
+                        </li>
+                        <li class="last">
+                            <a asp-area="" asp-controller="Home" asp-action="Logoff">Logout</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        @*<main role="main" class="pb-3">*@
+        <div class="wrapper">
+            <div class="card">
+                @RenderBody()
+            </div>
+        </div>
+        @*</main>*@
+    </div>
+
+
+
+    <!-- ####################################################################################################### -->
+    <footer class="border-top footer text-muted">
+        <div id="copyright">
+            <p class="fl_left">Copyright © 2021 - All Rights Reserved <a target="_blank" href="http://www.nblbd.com/">National Bank Limited.</a></p>
+            <p class="fl_right">Developed By: Information Technology Division, National Bank Limited.</p>
+            <br class="clear">
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/assets/theme/js/jquery-ui.js"></script>
+
+    <script src="~/lib/assets/theme/js/html2pdf.bundle.js"></script>
+    <script src="~/lib/assets/theme/js/genPDF.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

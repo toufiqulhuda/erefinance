@@ -1,0 +1,207 @@
+﻿@model IEnumerable<Erefinance.Models.StatusEntryModel>
+@{
+    ViewData["Title"] = "SME CATEGORY WISE REPORT";
+}
+<h1>@ViewData["Title"]</h1>
+<form method="POST" action="SmeCategoryWise">
+    <fieldset>
+        <legend><b>Search for SME Category-wise Report</b></legend>
+
+        <label>SME Category</label>
+
+        <select name="smecat_id_list" class="form-control" asp-items="@(new SelectList(@ViewBag.categorylists,"Id", "CategoryName"))">
+        </select>
+        <select name="fund_id_list" class="form-control" asp-items="@(new SelectList(@ViewBag.fundlists,"FundCode", "FundName"))">
+        </select>
+
+        <input type="text" id="datepickerFrom" name="start_date" value="" placeholder="From">
+        <input type="text" id="datepickerTo" name="end_date" value="" placeholder="To">
+        <input type="submit" name="gn_report" value="Search Report">
+
+    </fieldset>
+</form>
+@if (Model != null)
+{
+    <fieldset>
+        <legend><b>SME Category wise summary report</b></legend>
+
+        <p>
+        <input id="pdf-btn" type="submit" value="Save as PDF" name="pdfbtn" onclick="generatePDF('report_block', '@ViewData["Title"]')">
+        </p>
+
+
+            <div id="report_block">
+                <style>
+                    .rpt-Class {
+                        border: 1px solid #000;
+                        border-collapse: collapse;
+                        width: 90%;
+                        font-size: 13px;
+                        border-spacing: 0;
+                        border-collapse: collapse;
+                    }
+
+                        .rpt-Class tr td {
+                            padding: 2px 2px 2px 2px;
+                        }
+
+                    #rpt-header {
+                        font-size: 13px;
+                        font-weight: bold;
+                        text-align: left;
+                        background-color: #CCC;
+                    }
+
+                    #rpt-sub-header {
+                        height: 35px;
+                        vertical-align: top;
+                        font-weight: bold;
+                    }
+
+                    hr {
+                        border: 0px solid #000;
+                        height: 1px;
+                        background-color: #000;
+                        text-align: center;
+                    }
+
+                    #logo {
+                        background-image: url("images/logo.png");
+                        background-repeat: no-repeat;
+                        background-position: center top;
+                    }
+
+                    .footer-pdf {
+                        page-break-after: always;
+                    }
+                </style>
+
+                <table style="width:100%;" class="rpt-Class" cellspacing="0" border="1" align="center">
+                    <tbody>
+                        <tr>
+                            <td colspan="6" style="text-align:center;vertical-align:top;padding:0;">
+                                <img src="images/logo.png" alt="BB Logo" width="65" height="65"><br>
+                                <span style="font-size:18px; font-weight:bold">Bangladesh Bank</span><br>
+                                <span style="font-weight:bold">SME &amp; Special Programs Department</span><br><br>
+                                <span style="font-size:14px; font-weight:bold;text-decoration: underline;">SME Category-wise Summary</span><br><br>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="1" style="text-align:left;vertical-align:middle;padding:0;">
+                                Scheme: @ViewBag.fundName
+                            </td>
+
+                            <td colspan="2" style="text-align:right; vertical-align:top">
+
+                                Date Interval: @ViewBag.startDate To @ViewBag.endDate
+                            </td>
+
+                            <td colspan="2" style="text-align:right; vertical-align:top">
+                                Report Printing Date: @ViewBag.reportPrintDate
+                            </td>
+
+                            <td colspan="1" style="text-align:right; vertical-align:top">
+                                (All amount in BDT)
+                            </td>
+                        </tr>
+
+                        <tr style="font-weight:bold;background-color:#aaaaaa;">
+
+                            <td style="text-align:  center">	SL No.						</td>
+                            <td style="text-align:  center">	SME CATEGORY				</td>
+                            <td style="text-align:  center">	Total Disbursed Enterprise	</td>
+                            <td style="text-align:  center">	Total Disbursed Amount		</td>
+                            <td style="text-align:  center">	Total Approved Enterprise	</td>
+                            <td style="text-align:  center">	Total Approved Amount		</td>
+
+                        </tr>
+
+                        @{
+                            int count = 0;
+                            float TotalDisbEnterprise = 0;
+                            float TotalDisbAmount = 0;
+                            float TotalApprEnterprise = 0;
+                            float TotalApprAmount = 0;
+                            float GTotalDisbEnterprise = 0;
+                            float GTotalDisbAmount = 0;
+                            float GTotalApprEnterprise = 0;
+                            float GTotalApprAmount = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            TotalDisbEnterprise = item.DisbursedFemaleEnterprise + item.DisbursedMaleEnterprise;
+                            TotalDisbAmount = item.DisbursedFemaleAmount + item.DisbursedMaleAmount;
+                            TotalApprEnterprise = item.ApprovedFemaleEnterprise + item.ApprovedMaleEnterprise;
+                            TotalApprAmount = item.ApprovedFemaleAmount + item.ApprovedMaleAmount;
+
+                            GTotalDisbEnterprise = TotalDisbEnterprise + GTotalDisbEnterprise;
+                            GTotalDisbAmount = TotalDisbAmount + GTotalDisbAmount;
+                            GTotalApprEnterprise = TotalApprEnterprise + GTotalApprEnterprise;
+                            GTotalApprAmount = TotalApprAmount + GTotalApprAmount;
+
+                            count++;
+                            <tr style="text-align:  right;">
+                                <td style="text-align:  center">
+                                    @count
+                                </td>
+                                <td style="text-align: center">@item.SMECategory</td>
+                                <td>
+                                    @TotalDisbEnterprise
+                                </td>
+                                <td>
+                                    @TotalDisbAmount
+                                </td>
+                                <td>
+                                    @TotalApprEnterprise
+                                </td>
+                                <td>
+                                    @TotalApprAmount
+                                </td>
+                                
+                            </tr>
+                        }
+
+
+                        <tr style="font-weight:bold; background-color:#CCCCCC; text-align:  right; ">
+                            <td colspan="2" style="text-align: left;">Grand Total:</td>
+
+                            <td>
+                                @GTotalDisbEnterprise
+                            </td>
+
+                            <td>
+                                @GTotalDisbAmount
+                            </td>
+
+                            <td>
+                                @GTotalApprEnterprise
+                            </td>
+
+                            <td>
+                                @GTotalApprAmount
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </fieldset>
+}
+    @section scripts {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#datepickerFrom").datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: "dd-M-y"
+                });
+                $("#datepickerTo").datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: "dd-M-y"
+                });
+            });
+
+
+        </script>
+    }

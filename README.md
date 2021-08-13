@@ -35,13 +35,15 @@ This Application is used for maintaining internal credit risk rating system to t
 1. ASP.Net Core C#
  
 ## Technology and tools
-1. Visual Studio 2019
-2. SQL Server
-3. HTML
-4. CSS
-5. JS
-6. html2pdf lib
-7. Jquery DateTime Picker
+1. ASP: All the frontend logic has been written in ASP
+2. C#: All the business logic, we have written in c# 
+3. Visual Studio 2019: We have used Visual Studio 2019 to developing this project
+4. SQL Server : We have used SQL server database in this project
+5. HTML: All the layout designing has been done in HTML
+6. CSS: We have used CSS for interfacing and desigining the pages
+7. JavaScript: All the client side business logic has been developed in JavaScript 
+8. html2pdf lib: We have used html2pdf librrary to download reports
+9. Jquery DateTime Picker: We have used Jquery DateTime Picker in this project
 
 ## Screenshot
  <img src="https://github.com/toufiqulhuda/erefinance/blob/master/Screenshot/Home-Page-Erefinance.png" alt="HomePage" width="900" height="250"> 
